@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Demo JavaScript in Body</h2>
+
+<p id="demo">Tervetuloa!</p>
+
+<button type="button" onclick="myFunction()">Click me!</button>
+
+<p>
+  Tekstiä voi kirjoittaa myös ilman
+  <i>tekstielementtiä.</i>
+</p>
+
+Tällöin tekstiin ei voi viitata
+<b>JavaScript-koodista.</b>
+
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Paragraph changed.";
+}
+</script>
+
+</body>
+</html>
