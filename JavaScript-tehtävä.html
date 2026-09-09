@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript tehtävä</title>
+
+    <style>
+        .parillinen {
+            color: rgb(255, 149, 0);
+        }
+
+        .pariton {
+            color: rgb(232, 162, 162);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>JavaScript-tehtävä</h2>
+
+    <!-- 1. Sisällön päivittäminen -->
+    <h3>1. Päivitä sisältö</h3>
+
+    <p id="demo">Tämä teksti muuttuu.</p>
+
+    <button type="button" onclick="myFunction()">Click Me!</button>
+
+
+    <!-- 2. Painoindeksi -->
+    <h3>2. Painoindeksi</h3>
+
+    <button type="button" onclick="funktio1()">Laske painoindeksi</button>
+
+
+    <!-- 3. Päivämäärä, aika ja getTime() -->
+    <h3>3. Päivämäärä ja aika</h3>
+
+    <p id="date"></p>
+    <p id="time"></p>
+
+    <button type="button" onclick="naytaAika()">Näytä päivämäärä ja aika</button>
+
+
+    <!-- 4. Sekunnit -->
+    <h3>4. Tämän hetken sekunnit</h3>
+
+    <button type="button" onclick="naytaSekunnit()">Näytä sekunnit</button>
+
+    <ul id="sekunnit"></ul>
+
+
+<script>
+
+    // 1. Päivittää elementin sisällön
+    function myFunction() {
+        document.getElementById("demo").innerHTML =
+            "Sisältö on päivitetty!";
+    }
+
+
+    // 2. Painoindeksi
+    function funktio1() {
+
+        var pituus = prompt("Anna pituutesi metreinä:");
+        var paino = prompt("Anna painosi kilogrammoina:");
+
+        var tulos = funktio2(pituus, paino);
+
+        alert("Painoindeksisi on " + tulos.toFixed(2));
+    }
+
+    function funktio2(pituus, paino) {
+
+        var painoindeksi = paino / (pituus * pituus);
+
+        return painoindeksi;
+    }
+
+
+    // 3. Päivämäärä, aika ja getTime()
+    function naytaAika() {
+
+        const d = new Date();
+
+        document.getElementById("date").innerHTML =
+            "Päivämäärä ja aika: " + d;
+
+        document.getElementById("time").innerHTML =
+            "getTime(): " + d.getTime() +
+            "<br>getTime() kertoo millisekuntien määrän " +
+            "1.1.1970 lähtien.";
+    }
+
+
+    // 4. Sekunnit ja for-loop
+    function naytaSekunnit() {
+
+        var lista = document.getElementById("sekunnit");
+
+        lista.innerHTML = "";
+
+        const nykyinenSekunti = new Date().getSeconds();
+
+        for (var i = 0; i <= nykyinenSekunti; i++) {
+
+            var li = document.createElement("li");
+
+            li.innerHTML = i;
+
+            if (i % 2 === 0) {
+                li.className = "parillinen";
+            } else {
+                li.className = "pariton";
+            }
+
+            lista.appendChild(li);
+        }
+    }
+
+</script>
+
+</body>
+</html>
