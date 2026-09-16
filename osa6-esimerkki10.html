@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Listat ja oliot</title>
+</head>
+
+<body>
+
+    <h1>JavaScript listat</h1>
+
+    <script>
+        // TEHTÄVÄ 1
+        var luvut = [1, 2, 3];
+
+        luvut.push(4);
+        luvut.pop();
+
+        alert("Tehtävä 1: " + luvut);
+
+
+        // TEHTÄVÄ 2
+        var numerot = [];
+
+        numerot.push(10);
+        numerot.push(20);
+        numerot.push(30);
+        numerot.push(40);
+
+        for (var numero of numerot) {
+            alert("Tehtävä 2: " + numero);
+        }
+
+
+        // TEHTÄVÄ 3 - OLIOLISTA
+        var hahmot = [];
+
+        hahmot.push({
+            nimi: "Mario",
+            ika: 30
+        });
+
+        hahmot.push({
+            nimi: "Luigi",
+            ika: 28
+        });
+
+        hahmot.push({
+            nimi: "Peach",
+            ika: 25
+        });
+
+        for (var hahmo of hahmot) {
+            alert("Hahmo: " + hahmo.nimi + ", ikä: " + hahmo.ika);
+        }
+    </script>
+
+</body>
+</html>
