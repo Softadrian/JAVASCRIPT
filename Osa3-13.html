@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <body>
+      <script>
+    let almanPähkinät = prompt("Kuinka monta pähkinää Almalla on?")
+    let brunonPähkinät = 0
+
+     if(almanPähkinät == 5){
+        brunonPähkinät = almanPähkinät/2
+        almanPähkinät = almanPähkinät/2
+    } else if (almanPähkinät > 10){
+        almanPähkinät = almanPähkinät - 5;
+        brunonPähkinät = brunonPähkinät + 5;
+    } else {
+        brunonPähkinät = brunonPähkinät + 2;
+    }
+
+    alert("Almalla on " + almanPähkinät + " pähkinää. Brunolla on " + brunonPähkinät + " pähkinää.")
+
+</script>  
+    </body>
+</html>

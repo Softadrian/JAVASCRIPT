@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <body>
+<p id=teksti>
+    Mysteerinäppäin vaihtaa tekstini.
+</p>
+<script>
+    document.onkeydown = event => {
+        if (event.key === "a") {
+            teksti.textContent = "Voitin pelin!"
+        }
+    }
+</script>
+    </body>
+</html>
