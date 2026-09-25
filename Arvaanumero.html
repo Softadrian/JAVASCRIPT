@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <body>
+    <h1>Arvaa numero</h1>
+
+<input id="arvaus" type="number">
+<button id="nappi">Arvaa</button>
+
+<p id="teksti"></p>
+        <script>
+    let numero = Math.floor(Math.random() * 100) + 1
+
+        nappi.onclick = () => {
+    let arvaus = Number(arvaus.value)
+
+    if (arvaus == numero) {
+        teksti.textContent = "Oikein!"
+    }
+
+    if (arvaus > numero) {
+        teksti.textContent = "Liian suuri!"
+    }
+
+    if (arvaus < numero) {
+        teksti.textContent = "Liian pieni!"
+    }
+}
+        </script>
+    </body>
+</html>
