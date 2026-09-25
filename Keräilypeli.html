@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="kangas" width="800" height="600"
+        style="background-color: beige;"></canvas>
+
+<script>
+
+const kangas = document.querySelector("canvas");
+const piirtäjä = kangas.getContext("2d");
+
+function etäisyys(hahmo1, hahmo2) {
+    const dx = hahmo1.X - hahmo2.X;
+    const dy = hahmo1.Y - hahmo2.Y;
+    return Math.sqrt(dx * dx + dy * dy);
+}
+
+function siirräKohti(hahmo1, hahmo2, nopeus) {
+    const dx = hahmo2.X - hahmo1.X;
+    const dy = hahmo2.Y - hahmo1.Y;
+    const e = etäisyys(hahmo2, hahmo1);
+
+    if (e > 0) {
+        hahmo1.X += dx / e * nopeus;
+        hahmo1.Y += dy / e * nopeus;
+    }
+}
+
+const pelaaja = {
+    X: 100,
+    Y: 100,
+    pisteet: 0
+};
+
+const hiiri = {
+    X: 400,
+    Y: 300
+};
+
+const aarre = {
+    X: 500,
+    Y: 300
+};
+
+const vihollinen = {
+    X: 700,
+    Y: 500
+};
+
+kangas.onmousemove = event => {
+    hiiri.X = event.offsetX;
+    hiiri.Y = event.offsetY;
+};
+
+function piirrä() {
+    piirtäjä.clearRect(0, 0, 800, 600);
+
+    piirtäjä.fillRect(pelaaja.X, pelaaja.Y, 30, 30);
+
+    piirtäjä.fillRect(aarre.X, aarre.Y, 20, 20);
+
+    piirtäjä.fillRect(vihollinen.X, vihollinen.Y, 30, 30);
+
+    piirtäjä.font = "20px Arial";
+    piirtäjä.fillText("Pisteet " + pelaaja.pisteet, 20, 30);
+
+    requestAnimationFrame(piirrä);
+}
+
+requestAnimationFrame(piirrä);
+
+setInterval(() => {
+
+    siirräKohti(pelaaja, hiiri, 1);
+    siirräKohti(vihollinen, pelaaja, 0.5);
+
+    if (etäisyys(pelaaja, aarre) < 50) {
+
+        pelaaja.pisteet++;
+
+        aarre.X = Math.random() * 800;
+        aarre.Y = Math.random() * 600;
+
+        while (etäisyys(pelaaja, aarre) < 100) {
+            aarre.X = Math.random() * 800;
+            aarre.Y = Math.random() * 600;
+        }
+    }
+
+    if (etäisyys(pelaaja, vihollinen) < 30) {
+        pelaaja.X = 100;
+        pelaaja.Y = 100;
+
+        vihollinen.X = 700;
+        vihollinen.Y = 500;
+
+        pelaaja.pisteet = 0;
+    }
+
+}, 10);
+
+</script>
+
+</body>
+</html>
