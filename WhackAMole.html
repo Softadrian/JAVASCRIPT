@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html>
+    <body>
+     <h1>Whack-a-Mole</h1>
+        <!käytän tässä tekoälyä>
+<button id="myyra">🐹</button>
+
+    <p>Pisteet: <span id="pisteet">0</span></p>
+    <p>Aikaa: <span id="aika">30</span></p>
+
+<script>
+    let pisteet = 0
+    let aika = 30
+
+    myyra.onclick = () => {
+    pisteet++
+    document.getElementById("pisteet").textContent = pisteet
+
+    myyra.style.position = "absolute"
+    myyra.style.left = Math.random() * 500 + "px"
+    myyra.style.top = Math.random() * 300 + "px"
+}
+
+    let peli = setInterval(() => {
+    aika--
+    document.getElementById("aika").textContent = aika
+
+    if (aika == 0) {
+        clearInterval(peli)
+        myyra.disabled = true
+        alert("Peli loppui! Pisteet: " + pisteet)
+    }
+    
+}, 1000)
+
+</script> 
+    </body>
+</html>

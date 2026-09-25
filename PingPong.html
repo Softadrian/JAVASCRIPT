@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<htmnl>
+    <body>
+<style>
+body {
+    background: darkblue;
+    color: white;
+    text-align: center;
+}
+
+canvas {
+    background: lightblue;
+    border: 5px solid white;
+}
+</style>
+
+<!käytän tässä tekoälyä>
+<h1>🏓 PingPong</h1>
+
+<!käytän tässä tekoälyä>
+<p>W/S = left &nbsp; ↑/↓ = right</p>
+
+<canvas id="kangas" width="600" height="400"></canvas>
+
+<script>
+    let p = kangas.getContext("2d")
+    let y1 = 150
+    let y2 = 150
+    let x = 300
+    let y = 200
+    let dx = 3
+    let dy = 2
+
+document.onkeydown = e => {
+    if (e.key == "w") y1 -= 20
+    if (e.key == "s") y1 += 20
+    if (e.key == "ArrowUp") y2 -= 20
+    if (e.key == "ArrowDown") y2 += 20
+}
+
+setInterval(() => {
+    p.clearRect(0, 0, 600, 400)
+
+    p.fillStyle = "blue"
+    p.fillRect(20, y1, 10, 100)
+
+    p.fillStyle = "red"
+    p.fillRect(570, y2, 10, 100)
+
+    p.fillStyle = "yellow"
+    p.beginPath()
+    p.arc(x, y, 10, 0, Math.PI * 2)
+    p.fill()
+
+    x += dx
+    y += dy
+    
+//käytän tässä tekoälyä
+    if (y < 10 || y > 390) dy = -dy
+    if (x < 30 || x > 570) dx = -dx
+}, 20)
+</script>
+    </body>
+</htmnl>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <body>
+ <style>
+body {
+    background: skyblue;
+    text-align: center;
+}
+
+canvas {
+    background: lightblue;
+    border: 5px solid white;
+}
+</style>
+
+<h1>🐦 Flappy Bird</h1>
+<p>Paina SPACE</p>
+
+<canvas id="kangas" width="400" height="600"></canvas>
+
+<script>
+let p = kangas.getContext("2d")
+
+let y = 300
+let nopeus = 0
+let putkiX = 600
+let aukkoY = 250
+let pisteet = 0
+
+document.onkeydown = event => {
+    if (event.key == " ") {
+        nopeus = -7
+    }
+}
+
+setInterval(() => {
+    p.clearRect(0, 0, 400, 600)
+
+    nopeus += 0.3
+    y += nopeus
+    putkiX -= 3
+
+    if (putkiX < -50) {
+        putkiX = 400
+        aukkoY = Math.random() * 300 + 100
+        pisteet++
+    }
+
+    p.fillStyle = "green"
+    p.fillRect(putkiX, 0, 50, aukkoY - 100)
+    p.fillRect(putkiX, aukkoY + 100, 50, 600)
+
+    p.fillStyle = "yellow"
+    p.beginPath()
+    p.arc(100, y, 20, 0, Math.PI * 2)
+    p.fill()
+
+    p.fillStyle = "black"
+    p.fillText("Pisteet: " + pisteet, 10, 20)
+
+    if (y < 20 || y > 580) {
+        alert("Peli loppui! Pisteet: " + pisteet)
+        location.reload()
+    }
+
+    if (100 > putkiX && 100 < putkiX + 50) {
+        if (y < aukkoY - 100 || y > aukkoY + 100) {
+            alert("Peli loppui! Pisteet: " + pisteet)
+            location.reload()
+        }
+    }
+
+}, 20)
+</script>
+    </body>
+</html>
