@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <body>
+      <style>
+body {
+    background: black;
+    color: white;
+    text-align: center;
+}
+
+canvas {
+    background: lightblue;
+}
+</style>
+
+ <!käytän tässä tekoälyä>
+<h1>🎯 Väistelypeli</h1         >
+<p>⬅️ ➡️ Liiku</p>
+
+<canvas id="kangas" width="400" height="500"></canvas>
+
+<script>
+    let p = kangas.getContext("2d")
+
+    let x = 180
+    let y = 450
+    let esteX = 100
+    let esteY = 0
+
+document.onkeydown = event => {
+    if (event.key == "ArrowLeft") x -= 20
+    if (event.key == "ArrowRight") x += 20
+}
+
+setInterval(() => {
+    p.clearRect(0, 0, 400, 500)
+
+    p.fillStyle = "blue"
+    p.fillRect(x, y, 40, 40)
+
+    p.fillStyle = "red"
+    p.fillRect(esteX, esteY, 40, 40)
+
+    esteY += 5
+
+    if (esteY > 500) {
+        esteY = 0
+        esteX = Math.random() * 360
+    }
+ //käytän tässä tekoälyä
+    if (x < esteX + 40 &&
+        x + 40 > esteX &&
+        y < esteY + 40 &&
+        y + 40 > esteY) {
+        alert("Peli loppui!")
+        location.reload()
+    }
+}, 20)
+</script>  
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <body>
+ <p id="teksti">Paina nuolinäppäintä</p>
+
+<script>
+    document.onkeydown = event => {
+        if (event.key === "ArrowUp") {
+            teksti.textContent = "Ylös."
+        }
+
+        if (event.key === "ArrowDown") {
+            teksti.textContent = "Alas."
+        }
+
+        if (event.key === "ArrowLeft") {
+            teksti.textContent = "Vasemmalle."
+        }
+
+        if (event.key === "ArrowRight") {
+            teksti.textContent = "Oikealle."
+        }
+    }
+</script>
+    </body>
+</html>

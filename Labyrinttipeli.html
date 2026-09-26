@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <body>
+<style>
+body {
+    background: lightgreen;
+    text-align: center;
+}
+
+canvas {
+    background: white;
+    border: 5px solid black;
+}
+</style>
+
+    <!käytän tässä tekoälyä korttiemojit>
+    <h1>🧩 Labyrintti</h1>
+    <p>⬅️ ➡️ ⬆️ ⬇️ Liiku</p>
+
+<canvas id="kangas" width="500" height="400"></canvas>
+
+<script>
+    let p = kangas.getContext("2d")
+
+    let x = 20
+    let y = 20
+
+document.onkeydown = event => {
+    if (event.key == "ArrowUp") y -= 10
+    if (event.key == "ArrowDown") y += 10
+    if (event.key == "ArrowLeft") x -= 10
+    if (event.key == "ArrowRight") x += 10
+}
+
+setInterval(() => {
+    p.clearRect(0, 0, 500, 400)
+
+    p.fillStyle = "black"
+
+    p.fillRect(100, 0, 20, 300)
+    p.fillRect(200, 100, 20, 300)
+    p.fillRect(300, 0, 20, 300)
+    p.fillRect(400, 100, 20, 300)
+
+    p.fillStyle = "green"
+    p.fillRect(450, 350, 40, 40)
+
+    p.fillStyle = "blue"
+    p.fillRect(x, y, 30, 30)
+
+    //käytän tässä tekoälyä 
+    if (x > 450 && y > 350) {
+        alert("Voitit!")
+        location.reload()
+    }
+}, 20)
+</script>
+    </body>
+</html>

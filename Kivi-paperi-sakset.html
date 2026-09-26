@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <body>
+<h1>Kivi, paperi, sakset</h1>
+
+<button id="kivi">Kivi</button>
+<button id="paperi">Paperi</button>
+<button id="sakset">Sakset</button>
+
+<p id="tulos"></p>
+
+<script>
+kivi.onclick = () => pelaa("Kivi")
+paperi.onclick = () => pelaa("Paperi")
+sakset.onclick = () => pelaa("Sakset")
+
+    //käytän tässä tekoälyä
+function pelaa(pelaaja) {
+    let vaihtoehdot = ["Kivi", "Paperi", "Sakset"]
+    let tietokone = vaihtoehdot[Math.floor(Math.random() * 3)]
+
+    if (pelaaja == tietokone) {
+        tulos.textContent = "Tasapeli!"
+    }
+    //käytän tässä tekoälyä
+    if (pelaaja == "Kivi" && tietokone == "Sakset" ||
+        pelaaja == "Paperi" && tietokone == "Kivi" ||
+        pelaaja == "Sakset" && tietokone == "Paperi") {
+        tulos.textContent = "Voitit!"
+    }
+
+    if (pelaaja == "Kivi" && tietokone == "Paperi" ||
+        pelaaja == "Paperi" && tietokone == "Sakset" ||
+        pelaaja == "Sakset" && tietokone == "Kivi") {
+        tulos.textContent = "Tietokone voitti!"
+    }
+}
+</script>
+    </body>
+</html>

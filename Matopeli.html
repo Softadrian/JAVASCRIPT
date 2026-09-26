@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <body>
+<style>
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+canvas {
+    background-color: lightgreen;
+}
+</style>
+
+<h1>Matopeli</h1>
+
+<canvas id="kangas" width="400" height="400"></canvas>
+
+<script>
+let piirtaja = kangas.getContext("2d")
+
+let x = 200
+let y = 200
+
+document.onkeydown = event => {
+    if (event.key == "ArrowUp") y -= 20
+    if (event.key == "ArrowDown") y += 20
+    if (event.key == "ArrowLeft") x -= 20
+    if (event.key == "ArrowRight") x += 20
+}
+
+setInterval(() => {
+    piirtaja.clearRect(0, 0, 400, 400)
+    piirtaja.fillStyle = "green"
+    piirtaja.fillRect(x, y, 20, 20)
+}, 100)
+</script>
+    </body>
+</html>

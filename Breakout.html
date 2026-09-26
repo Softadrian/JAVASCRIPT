@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<htnl>
+    <body>
+<style>
+body {
+    background: darkblue;
+    text-align: center;
+    color: white;
+}
+
+canvas {
+    background: lightblue;
+    border: 5px solid white;
+}
+</style>
+
+<!käytän tässä tekoälyä 
+<h1>🧱 Breakout</h1>
+<p>⬅️ ➡️ Liiku</p>
+
+<canvas id="kangas" width="600" height="400"></canvas>
+
+<script>
+let p = kangas.getContext("2d")
+
+let x = 300
+let y = 330
+let dx = 3
+let dy = -3
+let maila = 270
+let pisteet = 0
+
+let tiilet = [
+    {x: 100, y: 50},
+    {x: 200, y: 50},
+    {x: 300, y: 50},
+    {x: 400, y: 50}
+]
+
+document.onkeydown = event => {
+    if (event.key == "ArrowLeft") maila -= 20
+    if (event.key == "ArrowRight") maila += 20
+}
+
+setInterval(() => {
+    p.clearRect(0, 0, 600, 400)
+
+    p.fillStyle = "red"
+
+    for (let tiili of tiilet) {
+        p.fillRect(tiili.x, tiili.y, 80, 20)
+    }
+
+    p.fillStyle = "black"
+    p.fillRect(maila, 360, 60, 10)
+
+    p.fillStyle = "yellow"
+    p.beginPath()
+    p.arc(x, y, 10, 0, Math.PI * 2)
+    p.fill()
+
+    x += dx
+    y += dy
+
+    if (x < 10 || x > 590) dx = -dx
+    if (y < 10) dy = -dy
+
+    if (y > 350 && x > maila && x < maila + 60) {
+        dy = -dy
+    }
+
+    //käytän tässä tekoälyä korttiemojit
+    for (let i = tiilet.length - 1; i >= 0; i--) {
+        let tiili = tiilet[i]
+
+        if (x > tiili.x &&
+            x < tiili.x + 80 &&
+            y > tiili.y &&
+            y < tiili.y + 20) {
+
+            tiilet.splice(i, 1)
+            dy = -dy
+            pisteet++
+        }
+    }
+
+    p.fillStyle = "black"
+    p.fillText("Pisteet: " + pisteet, 10, 20)
+
+    if (y > 400) {
+        alert("Peli loppui! Pisteet: " + pisteet)
+        location.reload()
+    }
+
+    if (tiilet.length == 0) {
+        alert("Voitit! Pisteet: " + pisteet)
+        location.reload()
+    }
+
+}, 20)
+</script>
+    </body>
+</htnl>

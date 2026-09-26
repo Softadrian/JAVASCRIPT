@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <body>
+<style>
+body {
+    text-align: center;
+    background-color: lightblue;
+}
+
+button {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    font-size: 40px;
+    background-color: white;
+    border: 3px solid blue;
+    border-radius: 10px;
+}
+</style>
+
+<h1>Muistipeli</h1>
+
+<button id="kortti1">?</button>
+<button id="kortti2">?</button>
+<button id="kortti3">?</button>
+<button id="kortti4">?</button>
+
+<script>
+
+//käytän tässä tekoälyä korttiemojit
+
+let kortit = [
+    ["🐶", "🐱"],
+    ["🐶", "🐱"]
+]
+
+let valitut = []
+
+kortti1.onclick = () => valitse(kortti1, "🐶")
+kortti2.onclick = () => valitse(kortti2, "🐱")
+kortti3.onclick = () => valitse(kortti3, "🐶")
+kortti4.onclick = () => valitse(kortti4, "🐱")
+
+function valitse(kortti, emoji) {
+    if (valitut.length < 2 && kortti.textContent == "?") {
+        kortti.textContent = emoji
+        valitut.push(kortti)
+    }
+
+    //käytän tässä tekoälyä
+    if (valitut.length == 2) {
+        if (valitut[0].textContent == valitut[1].textContent) {
+            valitut = []
+        } else {
+            setTimeout(() => {
+                valitut[0].textContent = "?"
+                valitut[1].textContent = "?"
+                valitut = []
+            }, 1000)
+        }
+    }
+}
+</script>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <body>
+<div id="peli">
+<button></button>
+<button></button>
+<button></button>
+<br>
+<button></button>
+<button></button>
+<button></button>
+<br>
+<button></button>
+<button></button>
+<button></button>
+</div>
+
+<script>
+    let vuoro = "X"
+    let painikkeet = document.querySelectorAll("button");
+
+    painikkeet.forEach(painike => {
+        painike.onclick = function() {
+            if (this.textContent === "") {
+                this.textContent = vuoro
+
+                if (vuoro === "X") {
+                    vuoro = "O"
+                } else {
+                    vuoro = "X"
+                }
+    let x = "X"
+
+        function pelaa() {
+        if (this.textContent == "") {
+        this.textContent = x
+        x = x == "X" ? "O" : "X"
+    }
+}
+
+document.querySelectorAll("button").forEach(nappi => {
+    nappi.onclick = pelaa
+}) 
+            }
+        }
+    })
+</script>
+    </body>
+</html>
